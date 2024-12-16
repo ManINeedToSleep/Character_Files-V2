@@ -1,0 +1,97 @@
+/* Reset body and html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* Main container */
+  .main-container {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  /* Image preview container */
+  .image-preview {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    transition: flex 0.7s ease, transform 0.5s ease;
+  }
+  
+  .image-preview:hover {
+    flex: 2; /* Zoom effect */
+    transform: scale(1.05);
+  }
+  
+  /* Static Image - Default Visible */
+  .image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Place image in front */
+    transition: opacity 0.5s ease;
+    opacity: 1; /* Fully visible by default */
+  }
+  
+  /* Video - Hidden by Default */
+  .image-preview video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Place video behind the image */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.5s ease;
+  }
+  
+  /* Hover Effect: Show Video, Hide Image */
+  .image-preview:hover img {
+    opacity: 0; /* Fade out image */
+  }
+  
+  .image-preview:hover video {
+    opacity: 1; /* Fade in video */
+  }
+  
+  /* Overlay for the Bottom Text Area */
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%; /* Dark gradient covers 40% of the container */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)); /* Dark at bottom, transparent at top */
+    opacity: 0;
+    transform: translateY(20%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 3; /* Place overlay above video */
+  }
+  
+  .image-preview:hover .overlay {
+    opacity: 1; /* Show overlay */
+    transform: translateY(0);
+  }
+  
+  /* Text Description */
+  .overlay .desc {
+    position: absolute;
+    bottom: 1rem; /* Positioned slightly above the bottom */
+    left: 0;
+    right: 0;
+    color: white;
+    font-size: 1rem;
+    padding: 0 1.5rem; /* Add gap on sides */
+    padding-bottom: 10px;
+    text-align: left; /* Left-align text */
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
